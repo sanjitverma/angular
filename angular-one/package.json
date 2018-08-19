@@ -1,0 +1,21 @@
+{
+  "name": "angular-one",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.7.3",
+    "core-js": "^2.5.7",
+    "lite-server": "^2.4.0",
+    "rxjs": "^6.2.2",
+    "systemjs": "^0.21.4",
+    "typescript": "^3.0.1",
+    "zone.js": "^0.8.26"
+  }
+}
