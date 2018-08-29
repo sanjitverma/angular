@@ -1,31 +1,29 @@
-import { Component } from '@angular/core';
 
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'binding-sample',
-    template: `<h1>This is {{ excercise }} sample</h1>
-                <button (click) = inputHandler($event)> Click Me </button> 
+    template: `<button (click) = changeFlag()>Change Value</button>
+                <span *ngIf="flag">This is span content.</span>
                 <br>
-                <input type="text" 
-                [value]= "excercise" 
-                [attr.value] = "excercise"
-                (input) = inputHandler($event) required/>
+                <template [ngIf]="flag">
+                    This is template content.
+                </template>
+
+                <input type="text" placeholder="Enter stock symbol" [(ngModel)] = "stockSymbol" />
+                <br> The value of the last stock is {{ stockSymbol }}.
                 `
 })
 export class HomeComponent{
- private excercise: string;
+ private flag: boolean;
+ private stockSymbol: string;
  constructor(){
-     this.excercise = "Binding properties..";
+     this.flag = true;
+     setTimeout(()=>{
+            this.stockSymbol = "AAPL";
+     },2000);
  }
-
- inputHandler(event: Event): void {
-     this.excercise = " The text is upddated...";
-     let inputElement: HTMLInputElement = event.target;
-
-     console.log("Input elements attribute value : " + inputElement.getAttribute('value'));
-     console.log("Input elements property value :" + inputElement.value);
-     console.log("Excercise property value: " + this.excercise);
+ changeFlag(){
+     this.flag = !this.flag;
  }
-
-
 }
