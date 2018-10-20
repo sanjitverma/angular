@@ -10,7 +10,7 @@ import {ActivatedRoute} from "@angular/router";
         <a routerLink="['/seller', '8888']">Seller Info</a>
     `,
     styles: ['.home {background: blue}'],
-    encapsulation: ViewEncapsulation.Native
+    encapsulation: ViewEncapsulation.Emulated
 
 })
 export class ProductComponent {

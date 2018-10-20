@@ -7,6 +7,7 @@ import {APP_BASE_HREF, HashLocationStrategy, LocationStrategy} from "@angular/co
 import {PageComponent} from "./first";
 import {ProductDetailsComponent} from "./product.details";
 import {SellerCommponent} from "./seller";
+import {LoginGuard} from "./login.guard";
 
 @NgModule({
     imports: [BrowserModule, routing],
@@ -15,7 +16,8 @@ import {SellerCommponent} from "./seller";
     providers: [{provide : LocationStrategy, useClass : HashLocationStrategy},
         {
             provide : APP_BASE_HREF, useValue : '/home'
-        }]
+        },
+        LoginGuard]
 })
 export class AppModule {
 
