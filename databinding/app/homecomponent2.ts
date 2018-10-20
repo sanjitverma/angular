@@ -14,12 +14,12 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent{
  private excercise: string;
- constructor(){
+ private constructor(){
      this.excercise = "Binding properties..";
  }
 
  inputHandler(event: Event): void {
-     this.excercise = " The text is upddated...";
+     this.excercise = " The text is upddated on method call...";
      let inputElement: HTMLInputElement = event.target;
 
      console.log("Input elements attribute value : " + inputElement.getAttribute('value'));

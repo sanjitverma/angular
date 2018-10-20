@@ -6,7 +6,8 @@ import {Directive, ElementRef, Renderer} from '@angular/core';
 // Component
 @Component({
   selector: 'hello-world',
-  template: `<h1>Hello {{ name }}!</h1>`
+  template: `<h1>Hello {{ name }}!</h1>
+  <input type="text" log-directive/>`
 })
 class HelloWorldComponent {
   name: string;

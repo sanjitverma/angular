@@ -1,9 +1,10 @@
 import {Component, Input} from '@angular/core';
-import {Product} from '../../services/product-service/product-service';
+import {Product, ProductService} from '../../services/product-service/product-service';
 
 @Component({
   selector: 'auction-product-item',
-  templateUrl: 'app/components/product-item/product-item.html'
+  templateUrl: 'app/components/product-item/product-item.html',
+  providers: [{provide: ProductService, useClass: ProductService}]
 })
 export default class ProductItemComponent {
   @Input() product: Product;
