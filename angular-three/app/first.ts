@@ -4,14 +4,15 @@ import {Router} from "@angular/router";
 
 @Component({
     selector: 'page-component',
-    template: `
-        <h1 class="first">This is First Page...</h1>  
+    template: `        
     <a [routerLink]="['/']">Home Page</a>
-    <a [routerLink]="['/product', '1234']">Product Info</a>
-    <router-outlet></router-outlet>    
+    <a [routerLink]="[{outlets : {primary: 'home', aux: 'chat'}}]">Open a chat</a>
+    <a [routerLink]="[{outlets: { aux: null}}]">Close Chat </a>
+    <router-outlet></router-outlet> 
+    <router-outlet name="aux"></router-outlet>    
     `,
-    styles: ['.first { background: coral}'],
-    encapsulation: ViewEncapsulation.Native
+    styles: ['.page-component { background: coral}'],
+    encapsulation: ViewEncapsulation.Emulated
 })
 export class PageComponent{
 

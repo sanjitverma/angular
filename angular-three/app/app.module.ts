@@ -8,14 +8,15 @@ import {PageComponent} from "./first";
 import {ProductDetailsComponent} from "./product.details";
 import {SellerCommponent} from "./seller";
 import {LoginGuard} from "./login.guard";
+import {ChatComponent} from "./chat";
 
 @NgModule({
     imports: [BrowserModule, routing],
-    declarations: [HomeComponent, ProductComponent, PageComponent, ProductDetailsComponent, SellerCommponent],
+    declarations: [HomeComponent, ProductComponent, PageComponent, ProductDetailsComponent, SellerCommponent, ChatComponent],
     bootstrap: [PageComponent],
     providers: [{provide : LocationStrategy, useClass : HashLocationStrategy},
         {
-            provide : APP_BASE_HREF, useValue : '/home'
+            provide : APP_BASE_HREF, useValue : '/exp'
         },
         LoginGuard]
 })
