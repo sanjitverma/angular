@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HomeComponent} from "./home";
-import {ProductDetails} from "./product";
+import {ProductComponent} from "./product";
 import {routing} from "./route";
 import {APP_BASE_HREF, HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {PageComponent} from "./first";
+import {ProductDetailsComponent} from "./product.details";
+import {SellerCommponent} from "./seller";
 
 @NgModule({
     imports: [BrowserModule, routing],
-    declarations: [HomeComponent, ProductDetails, PageComponent],
+    declarations: [HomeComponent, ProductComponent, PageComponent, ProductDetailsComponent, SellerCommponent],
     bootstrap: [PageComponent],
     providers: [{provide : LocationStrategy, useClass : HashLocationStrategy},
         {
