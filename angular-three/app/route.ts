@@ -5,6 +5,6 @@ import {ProductDetails} from "./product";
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
-    {path: 'product', component: ProductDetails}];
+    {path: 'product/:id', component: ProductDetails}];
 
 export const routing = RouterModule.forRoot(routes);
