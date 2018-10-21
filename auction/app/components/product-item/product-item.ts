@@ -3,8 +3,7 @@ import {Product, ProductService} from '../../services/product-service/product-se
 
 @Component({
   selector: 'auction-product-item',
-  templateUrl: 'app/components/product-item/product-item.html',
-  providers: [{provide: ProductService, useClass: ProductService}]
+  templateUrl: 'app/components/product-item/product-item.html'
 })
 export default class ProductItemComponent {
   @Input() product: Product;

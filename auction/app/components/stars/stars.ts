@@ -10,7 +10,7 @@ export default class StarsComponent implements OnInit {
   stars: boolean[] = []; // <3>
   ngOnInit() { // <4>
     for (let i = 1; i <= this.count; i++) {
-      this.stars.push(i < this.rating);
+      this.stars.push(i > this.rating);
     }
   }
 }
