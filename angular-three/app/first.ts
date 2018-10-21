@@ -8,6 +8,7 @@ import {Router} from "@angular/router";
         <h1 class="first">This is First Page...</h1>  
     <a [routerLink]="['/']">Home Page</a>
     <a [routerLink]="['/product', '1234']">Product Info</a>
+    <a [routerLink]="['/luxury']">Luxury</a>    
     <router-outlet></router-outlet>    
     `,
     styles: ['.first { background: coral}'],
