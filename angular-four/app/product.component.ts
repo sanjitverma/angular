@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {Product, ProductService} from "./service/product.service";
+import {MockProductService, Product, ProductService} from "./service/product.service";
 
 
 @Component({
@@ -12,9 +12,23 @@ import {Product, ProductService} from "./service/product.service";
         <h2>Product Description: {{ product.desc }}</h2>
     </div>
     `,
-    providers: [ProductService]
+    providers: [{
+        'provide': ProductService,
+        'useFactory': (isDev: boolean) => {
+            if (!isDev) {
+                return new MockProductService();
+            }
+            else {
+                return new ProductService();
+            }
+        },
+        'deps': ["IS_DEVELOPMENT_MODE"]
+    }]
+
+
 })
 export class ProductComponent{
+
     product: Product;
     constructor(private productService: ProductService){
             this.product = productService.getProduct();
