@@ -7,7 +7,7 @@ import {LuxuryComponent} from "./luxury.component";
 
 
 const routes: Routes = [{
-    path: 'luxury', component: LuxuryComponent
+    path: '', component: LuxuryComponent
 }]
 
 
@@ -15,5 +15,5 @@ const routes: Routes = [{
     imports: [CommonModule, RouterModule.forChild(routes)],
     declarations: [LuxuryComponent]
 })
-export class LuxuryModule {
+export default class LuxuryModule {
 }

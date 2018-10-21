@@ -8,10 +8,9 @@ import {PageComponent} from "./first";
 import {ProductDetailsComponent} from "./product.details";
 import {SellerCommponent} from "./seller";
 import {LoginGuard} from "./login.guard";
-import {LuxuryModule} from "./luxury/luxury.module";
 
 @NgModule({
-    imports: [BrowserModule, routing, LuxuryModule],
+    imports: [BrowserModule, routing],
     declarations: [HomeComponent, ProductComponent, PageComponent, ProductDetailsComponent, SellerCommponent],
     bootstrap: [PageComponent],
     providers: [{provide : LocationStrategy, useClass : HashLocationStrategy},

@@ -8,6 +8,7 @@ import {LoginGuard} from "./login.guard";
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
+    {path: 'luxury', loadChildren : 'app/luxury/luxury.module'},
     {
         path: 'product/:id', component: ProductComponent,
         children: [
