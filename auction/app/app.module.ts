@@ -12,12 +12,13 @@ import {RouterModule} from "@angular/router";
 import {ProductDetailsComponent} from "./components/product-details/product-details.component";
 import {HomeComponent} from "./components/home/home.component";
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
     imports:      [ BrowserModule, RouterModule.forRoot([
         {path: '', component: HomeComponent},
         {path: 'products/:id', component: ProductDetailsComponent}
-    ]) ],
+    ]), ReactiveFormsModule],
     declarations: [ ApplicationComponent,
                     CarouselComponent,
                     FooterComponent,
