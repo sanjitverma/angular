@@ -13,6 +13,7 @@ import {ProductDetailsComponent} from "./components/product-details/product-deta
 import {HomeComponent} from "./components/home/home.component";
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {ReactiveFormsModule} from "@angular/forms";
+import {FilterPipe} from "./pipe/filter-pipe";
 
 @NgModule({
     imports:      [ BrowserModule, RouterModule.forRoot([
@@ -27,7 +28,7 @@ import {ReactiveFormsModule} from "@angular/forms";
                     SearchComponent,
                     StarsComponent,
                     ProductDetailsComponent,
-                    HomeComponent],
+                    HomeComponent, FilterPipe],
     providers:    [ProductService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
     bootstrap:    [ ApplicationComponent ]
 })
