@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@angular/core';
 import "rxjs/add/operator/debounceTime";
 
 
@@ -14,7 +14,8 @@ import "rxjs/add/operator/debounceTime";
     styles: [` .parent {
         background: #fcba4d
     }`],
-    encapsulation: ViewEncapsulation.Native
+    encapsulation: ViewEncapsulation.Native,
+    changeDetection: ChangeDetectionStrategy.OnPush
 
 })
 export class TwoWayComponent{
