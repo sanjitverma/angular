@@ -21,6 +21,7 @@
     "jquery": "^2.2.2"
   },
   "devDependencies": {
+    "@types/es6-shim": "^0.31.37",
     "live-server": "0.8.2",
     "typescript": "~2.0.0"
   }
