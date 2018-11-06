@@ -2,6 +2,15 @@ import {Component} from '@angular/core';
 import "rxjs/add/operator/debounceTime";
 import {AbstractControl, FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 
+
+function ssnValidator(control: FormControl): {[key : string] : any} {
+    const value = control.value || '';
+    const valid = value.match(/^\d{9}$/);
+    return valid ? null : {ssn : true};
+
+}
+
+
 @Component({
     selector: 'app',
     template: `
@@ -24,6 +33,9 @@ import {AbstractControl, FormArray, FormControl, FormGroup, ReactiveFormsModule,
         </div>
     `
 })
+
+
+
 export class AppComponent {
 
     formModel: FormGroup;
@@ -31,7 +43,7 @@ export class AppComponent {
     constructor() {
         this.formModel = new FormGroup({
             emails: new FormArray([
-                new FormControl("", [Validators.required, Validators.minLength(30)])
+                new FormControl("", [ssnValidator, Validators.minLength(30)])
             ])
         });
     }
@@ -41,10 +53,11 @@ export class AppComponent {
         for (var i = 0; i < emails.length ; i++){
             var control: AbstractControl = emails.controls[i];
             if(!control.valid) {
+                console.log(JSON.stringify(control.errors));
                 console.log("Invalid value...." + control.value);
             }
         }
-        emails.push(new FormControl('', [Validators.required, Validators.minLength(30)]));
+        emails.push(new FormControl('', [ssnValidator, Validators.minLength(30)]));
         console.log(this.formModel.value);
     }
 
