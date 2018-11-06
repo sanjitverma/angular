@@ -3,7 +3,7 @@ import "rxjs/add/operator/debounceTime";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 
 @Component({
-    selector: 'app',
+    selector: 'app1',
     template: `
         <div>
             <form [formGroup]="formModel" (ngSubmit)="submitForm()">
@@ -18,13 +18,13 @@ import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
         </div>
     `
 })
-export class AppComponent {
+export class AppComponent1 {
 
     formModel: FormGroup;
 
     constructor() {
         this.formModel = new FormGroup({
-            uerName: new FormControl("Sanjit"),
+            emails: new FormControl("Sanjit"),
             ssn: new FormControl("123456"),
             passWord: new FormGroup({
                 mpasswd: new FormControl('1111'),
