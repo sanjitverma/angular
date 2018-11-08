@@ -1,11 +1,16 @@
-import * as http from 'http';
+import * as express from  "express";
 
-const server = http.createServer((request, response) =>{
-    response.writeHead(200, {'Content-Type': 'application/json'});
-    response.end('{"message": "Hello Json!"}\n');
-});
+const app = express();
 
-const port = 8000;
+app.get('/', (req, res) =>{ res.send("Hello from Express!") });
+app.get('/products', (req, res)=>{
+    console.log("Received request for "+ req.path);
+    res.send("Received request for products...")});
+app.get('/reviews', (req, res)=>{
+    res.send("Received request for reviews...")});
 
-server.listen(port);
-console.log('Listening on http://localhost:' + port);
+
+const server = app.listen(8000, "localhost", () => {
+    const {address, port } = server.address();
+    console.log("Listening on http://localhost:"+port);
+})
