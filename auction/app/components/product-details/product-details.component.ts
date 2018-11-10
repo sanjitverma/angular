@@ -1,7 +1,6 @@
 import {Component} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {Product, ProductService, Review} from "../../services/product-service/product-service";
-import {NgModule} from "@angular/core";
 
 @Component({
     selector: 'product-details',
