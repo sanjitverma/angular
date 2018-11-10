@@ -10,15 +10,15 @@
         <p><auction-stars [rating]="product.rating"></auction-stars></p>
     </div>
 </div>
-<button (click)="isReviewHidden = !isReviewHidden"
-        class="btn btn-success btn-green">Leave a Review</button>
+<button (click)="isReviewHidden = !isReviewHidden" class="btn btn-success btn-green">Leave a Review</button>
 
 <div [hidden]="isReviewHidden">
     <div>
-        <auction-stars [(rating)]="newRating"
-                       [readonly]="false" class="large"></auction-stars>
+        <auction-stars [(rating)]="newRating" [readonly]="false" class="large"></auction-stars>
     </div>
-    <div><textarea [(ngModel)]="newComment"></textarea></div>
+    <div>
+        <textarea [(ngModel)]="newComment"></textarea>
+    </div>
     <div><button (click)="addReview()" class="btn btn-success btn-green">Add review</button></div>
 </div>
 

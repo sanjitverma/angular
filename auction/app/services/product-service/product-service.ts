@@ -33,6 +33,10 @@ export class Review {
          return reviews
               .map(r => new Review(r.id, r.productId, new Date(r.timestamp), r.user, r.rating, r.comment));
       }
+
+      getProductCategory(): Array<string> {
+        return ['Books', 'Electronics', 'Hardware'];
+      }
   }
 
 

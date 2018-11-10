@@ -1,10 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var http = require("http");
-var server = http.createServer(function (request, response) {
-    response.writeHead(200, { 'Content-Type': 'application/json' });
-    response.end('{"message": "Hello Json!"}\n');
+var express = require("express");
+var app = express();
+app.get('/', function (req, res) { res.send("Hello from Express!"); });
+app.get('/products', function (req, res) {
+    console.log("Received request for " + req.path);
+    res.send("Received request for products...");
 });
-var port = 8000;
-server.listen(port);
-console.log('Listening on http://localhost:' + port);
+app.get('/reviews', function (req, res) {
+    res.send("Received request for reviews...");
+});
+var server = app.listen(8000, "localhost", function () {
+    var _a = server.address(), address = _a.address, port = _a.port;
+    console.log("Listening on http://localhost:" + port);
+});
