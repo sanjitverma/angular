@@ -28,7 +28,7 @@ function getProductByID(id: number): Product{
 }
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'client/main.html'));
+    res.sendFile(path.join(__dirname, '../client/main.html'));
 });
 
 app.get('/products', (req, res)=>{

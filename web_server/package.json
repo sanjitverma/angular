@@ -3,13 +3,12 @@
   "name": "web_server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "tsc",
-    "start": "node build/hello_server.js",
     "nodemon-start": "nodemon build/hello_server.js",
-    "nodemon-rest": "tsc | nodemon build/hello_rest_server.js"
+    "nodemon-rest": "nodemon build/hello_rest_server.js",
+    "nodemon-angular": "nodemon build/auction_rest_server_angular.js"
   },
   "dependencies": {
     "@angular/common": "^2.4.0",
@@ -35,6 +34,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/es6-shim": "^0.31.39"
+    "@types/es6-shim": "^0.31.39",
+    "typescript": "~2.0.10"
   }
 }
