@@ -8,7 +8,8 @@
     "tsc": "tsc",
     "nodemon-start": "nodemon build/hello_server.js",
     "nodemon-rest": "nodemon build/hello_rest_server.js",
-    "nodemon-angular": "nodemon build/auction_rest_server_angular.js"
+    "nodemon-angular": "nodemon build/auction_rest_server_angular.js",
+    "websocket-server": "nodemon build/simple-websocket-server.js"
   },
   "dependencies": {
     "@angular/common": "^2.4.0",
@@ -35,6 +36,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/es6-shim": "^0.31.39",
+    "@types/ws": "^6.0.1",
     "typescript": "~2.0.10"
   }
 }
