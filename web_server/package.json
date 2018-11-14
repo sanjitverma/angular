@@ -9,7 +9,8 @@
     "nodemon-start": "nodemon build/hello_server.js",
     "nodemon-rest": "nodemon build/hello_rest_server.js",
     "nodemon-angular": "nodemon build/auction_rest_server_angular.js",
-    "websocket-server": "nodemon build/simple-websocket-server.js"
+    "websocket-server": "nodemon build/simple-websocket-server.js",
+    "two-way": "nodemon build/two-way-websocket-server.js"
   },
   "dependencies": {
     "@angular/common": "^2.4.0",

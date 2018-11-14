@@ -19,7 +19,7 @@ System.config({
         }
     },
     packages: {
-        'app': {main: 'main-form', defaultExtension: 'ts'},
+        'app': {main: 'websocket-observable-service-subscriber', defaultExtension: 'ts'},
         'rxjs': {main: 'Rx'},
         '@angular/core': {main: 'core.umd.min.js'},
         '@angular/common': {main: 'common.umd.min.js'},
