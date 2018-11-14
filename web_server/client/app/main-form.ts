@@ -54,7 +54,7 @@ class AppComponent {
     getProduct(){
       this.product = this.productService
           .getProduct(this.formModel.value.id)
-          .subscribe(data => {
+          .subscribe((data) => {
               this.productTitle = data.title;
               this.productPrice = '$' +  data.price;
           });
