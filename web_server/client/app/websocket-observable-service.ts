@@ -2,7 +2,7 @@ import {Observable} from "rxjs";
 
 
 export class WebsocketObservableService{
-    ws: WebSocket;
+    private ws: WebSocket;
     createWebSocketObservable(url: string) : Observable<any>{
         this.ws = new WebSocket(url);
         return new Observable(

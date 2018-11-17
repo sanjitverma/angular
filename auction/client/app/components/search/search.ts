@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ProductService} from "../../services/product-service/product-service";
 
-function positiveNumberVlaidator(control: AbstractControl): {[key: string] : any} {
+function positiveNumberValidator(control: AbstractControl): {[key: string] : any} {
     const num = control.value;
     if(num != null){
         const price = parseInt(num);
@@ -13,24 +13,26 @@ function positiveNumberVlaidator(control: AbstractControl): {[key: string] : any
 
 @Component({
     selector: 'auction-search',
-    templateUrl: 'app/components/search/search.html',
-    providers: [ProductService]
+    templateUrl: 'app/components/search/search.html'
 })
 
 export default class SearchComponent {
     formModel: FormGroup;
     categories: string[];
 
-    constructor(productService: ProductService){
-        this.categories = productService.getProductCategory();
+    constructor(private productService: ProductService){
+        this.categories = this.productService.getAllCategories();
         this.formModel = new FormGroup({
             'title': new FormControl(null, Validators.minLength(3)),
-            'price': new FormControl(null, positiveNumberVlaidator),
+            'price': new FormControl(null, positiveNumberValidator),
             'category': new FormControl(-1)
         });
     }
 
-    searchValue({ value } : FormGroup){
-        console.log(JSON.stringify(value));
+    onSearch(){
+        if (this.formModel.valid){
+            console.log("In the search event handler....");
+            this.productService.searchEvent.emit(this.formModel.value);
+        }
     }
 }

@@ -1,6 +1,8 @@
 import {Component} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {Product, ProductService, Review} from "../../services/product-service/product-service";
+import {BidService} from "../../services/bid.service";
+import {Subscription} from "rxjs";
 
 @Component({
     selector: 'product-details',
@@ -13,10 +15,28 @@ export class ProductDetailsComponent{
     newRating: number;
     newComment: string;
     isReviewHidden: boolean = true;
-    constructor(_activatedRoute: ActivatedRoute, private productService: ProductService){
+    private subscription: Subscription;
+
+
+    constructor(_activatedRoute: ActivatedRoute,
+                private productService: ProductService,
+                private bidService: BidService){
+
         this.productId = _activatedRoute.snapshot.params['id'];
-        this.product = productService.getProductById(this.productId);
-        this.reviews = productService.getReviewForProduct(this.productId);
+        productService.getProductById(this.productId)
+            .subscribe(
+            data => {
+                this.product = data;
+            },
+            err => console.error(err)
+        );
+
+        productService.getReviewsForProduct(this.productId).subscribe(
+                reviews =>{
+                    this.reviews = reviews;
+                },
+            error => console.error(error)
+        );
     }
 
 

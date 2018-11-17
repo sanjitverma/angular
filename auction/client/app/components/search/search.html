@@ -1,5 +1,6 @@
-<form [formGroup]="formModel" novalidate>
 
+
+<form [formGroup]="formModel" (ngSubmit)="onSearch()" novalidate>
     <div class="form-group" [class.has-error]="formModel.hasError('minlength', 'title')">
         <label for="title">Product title:</label>
         <input id="title"
@@ -36,6 +37,6 @@
 
     <div class="form-group">
         <button type="submit"
-                class="btn btn-primary btn-block" (click)  = "searchValue(formModel)">Search</button>
+                class="btn btn-primary btn-block">Search</button>
     </div>
 </form>

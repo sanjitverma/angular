@@ -14,12 +14,15 @@ import {HomeComponent} from "./components/home/home.component";
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FilterPipe} from "./pipe/filter-pipe";
+import {HttpModule} from "@angular/http";
+import {BidService} from "./services/bid.service";
+import {WebSocketService} from "./services/websocket.service";
 
 @NgModule({
     imports:      [ BrowserModule, RouterModule.forRoot([
         {path: '', component: HomeComponent},
         {path: 'products/:id', component: ProductDetailsComponent}
-    ]), ReactiveFormsModule, FormsModule],
+    ]), ReactiveFormsModule, FormsModule, HttpModule],
     declarations: [ ApplicationComponent,
                     CarouselComponent,
                     FooterComponent,
@@ -29,7 +32,10 @@ import {FilterPipe} from "./pipe/filter-pipe";
                     StarsComponent,
                     ProductDetailsComponent,
                     HomeComponent, FilterPipe],
-    providers:    [ProductService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+    providers:    [ProductService,
+                    BidService,
+                    WebSocketService,
+                    {provide: LocationStrategy, useClass: HashLocationStrategy}],
     bootstrap:    [ ApplicationComponent ]
 })
 export class AppModule { }
