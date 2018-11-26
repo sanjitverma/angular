@@ -7,9 +7,15 @@ export class WebsocketObservableService{
         this.ws = new WebSocket(url);
         return new Observable(
             observer => {
-                this.ws.onmessage = (event) => observer.next(event.data);
-                this.ws.onerror = (event) => observer.error(event.error);
-                this.ws.onclose = (event) => observer.complete();
+                this.ws.onmessage = function(event) {
+                    observer.next(event.data)
+                };
+                this.ws.onerror = function(event) {
+                    observer.error(event.error);
+                };
+                this.ws.onclose = function(event) {
+                    observer.complete();
+                };
             }
         );
     }

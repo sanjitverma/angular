@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnDestroy} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {Product, ProductService, Review} from "../../services/product-service/product-service";
 import {BidService} from "../../services/bid.service";
@@ -8,13 +8,15 @@ import {Subscription} from "rxjs";
     selector: 'product-details',
     templateUrl: 'app/components/product-details/product-details.html'
 })
-export class ProductDetailsComponent{
+export class ProductDetailsComponent implements OnDestroy{
     productId: number
     product: Product;
     reviews: Review[];
     newRating: number;
+    currentBid: number;
     newComment: string;
     isReviewHidden: boolean = true;
+    isWatching: boolean = false;
     private subscription: Subscription;
 
 
@@ -23,10 +25,12 @@ export class ProductDetailsComponent{
                 private bidService: BidService){
 
         this.productId = _activatedRoute.snapshot.params['id'];
-        productService.getProductById(this.productId)
+        productService
+            .getProductById(this.productId)
             .subscribe(
-            data => {
-                this.product = data;
+            product => {
+                    this.product = product;
+                    this.currentBid = product.price;
             },
             err => console.error(err)
         );
@@ -60,5 +64,25 @@ export class ProductDetailsComponent{
         this.newRating = 0;
         this.newComment = null;
         this.isReviewHidden = true;
+    }
+
+    toggleWatchProduct() {
+        if (this.subscription) {
+            this.subscription.unsubscribe();
+            this.subscription = null;
+            this.isWatching = false;
+        } else {
+            this.isWatching = true;
+            this.subscription = this.bidService.watchProduct(this.product.id)
+                .subscribe(
+                    products => this.currentBid = products.find((p: any) => p.productId === this.product.id).bid,
+                    error => console.log(error));
+        }
+    }
+
+    ngOnDestroy(): void {
+        if(this.subscription) {
+            this.subscription.unsubscribe();
+        }
     }
 }
